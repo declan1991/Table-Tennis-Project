@@ -5,13 +5,14 @@ class PlayerList extends Component {
 		super(props); 
 
 		this.state = {
-			value: '',
-			item: [],
+			value: '', //empty string for the user name
+			item: [], // empty array to store players name 
 
 		}
 
 		this.handleChange = this.handleChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
+		this.sort = this.sort.bind(this)
 	}
 
 	handleChange(event) {
@@ -27,15 +28,27 @@ class PlayerList extends Component {
 		}); 
 	}
 
+	sort(event) {
+
+		this.setState({
+			item: this.state.item.sort(function(a, b){
+				return 0.5 - Math.random()
+			})
+		}); 
+    
+	  }
+
 	render() {
 		return (
 
 			<Fragment> 
 
+			    <div className="player-form">
+
 				<label>Create Player Name</label>
 
-					<input value={ this.state.value } 
-					onChange={ this.handleChange } />
+					<input value={this.state.value} 
+					onChange={this.handleChange} />
 
 					<button onClick={this.handleSubmit}>Add Player</button> 
 
@@ -48,8 +61,14 @@ class PlayerList extends Component {
 						}
 
 						</ul> 
+				</div>
+				<div className="player-matches"> 
 
-					<button>Generate HERE</button> 
+					<button onClick={this.sort}>Generate VS HERE</button>
+
+					<p>{this.item}</p> 
+
+				</div> 
 
 			</Fragment> 
 

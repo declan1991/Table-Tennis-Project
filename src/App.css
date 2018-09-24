@@ -1,6 +1,10 @@
 .page-header {
   border: solid 5px black;
+  margin: auto; 
 }
+ .title {
+  text-align: center; 
+ }
 
 .player-names {
   list-style-type: none;
