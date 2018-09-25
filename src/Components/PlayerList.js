@@ -24,7 +24,7 @@ class PlayerList extends Component {
 	handleSubmit(event) {
 		this.setState({
 			value: '',
-			playerNames: this.state.playerNames.concat([this.state.value] + ' ')
+			playerNames: this.state.playerNames.concat([this.state.value] + ' ' + 'vs ') 
 		}); 
 	}
 
@@ -60,7 +60,7 @@ class PlayerList extends Component {
 				</div>
 
 				<button className="generateBtn" 
-					onClick={this.sort}>Generate Here
+					onClick={this.sort}>Generate Pairings
 					</button>
 
 				<div className="player-matches"> 

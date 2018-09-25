@@ -28,8 +28,8 @@
 	background-color:  #66CCCC; 
 	padding: 5%;
 	margin-top: 16%;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 100px;
+	margin-right: 100px;
 	align-content: center; 
 	border: solid 5px black; 	
 } 
@@ -79,9 +79,10 @@
 	color: white;
 	padding: 1%;
 	width: 50%;
-	margin-left: 22%;
-	font-size: 20px;
+	margin-left: 15%;
+	font-size: 15px;
 	font-weight: normal;
+	box-shadow: 6px 8px 5px 0px rgba(0,0,0,0.75);
 }
 
 .player-form {
