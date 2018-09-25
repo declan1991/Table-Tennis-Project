@@ -1,12 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+
 .page-header {
-  border: solid 5px black;
   margin: auto; 
+  margin-top: 5%; 
 }
- .title {
-  text-align: center; 
+ .page-title {
+ 	display: inline-block;
+    text-align: center;
+    background-color: white;  
+
  }
 
 .player-names {
   list-style-type: none;
+  font-family: 'Pacifico', cursive;
 }
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr ;
+	grid-template-rows: repeat(2, auto);
+	grid-gap: 3%;
+	grid-template-areas:
+		"main aside"
+	;
+	background-color:  #66CCCC; 
+	padding: 5%;
+	margin-top: 16%;
+	margin-left: 20px;
+	margin-right: 20px;
+	align-content: center; 
+	border: solid 5px black; 	
+} 
+
+/* input form for player names */ 
+.subheadleft {
+	display: block; 
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.subheadright {
+	display: block; 
+	font-size: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+
+}
+.inputField {
+	display: block;
+	margin: 20px 0 20px 0;
+	border: none;
+	padding: 3%;
+	width: 35%;
+	background-color: white; 
+}
+
+/* Button Styling */ 
+
+.addBtn {
+	display: block;
+	border: none;
+	background-color: #ff5977; 
+	color: white;
+	padding: 3%;
+	width: 41%;
+	font-size: 13px;
+	margin-bottom: 20px; 
+}
+
+.generateBtn {
+	position: fixed;
+	bottom: 12%; 
+	align-items: center; 
+	border: none;
+	background-color:  #ff5977;
+	color: white;
+	padding: 1%;
+	width: 50%;
+	margin-left: 22%;
+	font-size: 20px;
+	font-weight: normal;
+}
+
+.player-form {
+	border-right: dashed 8px black;
+
+}
+
+
+
 

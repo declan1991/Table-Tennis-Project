@@ -5,8 +5,8 @@ class PlayerList extends Component {
 		super(props); 
 
 		this.state = {
-			value: '', //empty string for the user name
-			item: [], // empty array to store players name 
+			value: '', //empty string for palyers names inputted
+			playerNames: [], // empty array to store players name 
 
 		}
 
@@ -24,14 +24,14 @@ class PlayerList extends Component {
 	handleSubmit(event) {
 		this.setState({
 			value: '',
-			item: this.state.item.concat([this.state.value])
+			playerNames: this.state.playerNames.concat([this.state.value] + ' ')
 		}); 
 	}
 
 	sort(event) {
 
 		this.setState({
-			item: this.state.item.sort(function(a, b){
+			randomisePlayers: this.state.playerNames.sort(function(a, b){
 				return 0.5 - Math.random()
 			})
 		}); 
@@ -43,30 +43,31 @@ class PlayerList extends Component {
 
 			<Fragment> 
 
-			    <div className="player-form">
+			    <div className="player-form">	
 
-				<label>Create Player Name</label>
-
-					<input value={this.state.value} 
+					<input className="inputField" 
+					placeholder="Enter Player Name..."
+					value={this.state.value} 
 					onChange={this.handleChange} />
 
-					<button onClick={this.handleSubmit}>Add Player</button> 
+					<p>Player: {this.state.value}</p> 
 
-						<ul> 
-							{
-								this.state.item.map((item, index) =>
-							<li className="player-names" key={index}>{item}</li> 
+					<button className="addBtn" 
+					onClick={this.handleSubmit}>Add Player
+					</button>
 
-							)
-						}
-
-						</ul> 
+						
 				</div>
+
+				<button className="generateBtn" 
+					onClick={this.sort}>Generate Here
+					</button>
+
 				<div className="player-matches"> 
 
-					<button onClick={this.sort}>Generate VS HERE</button>
+					<label className="subheadright">Who vs Who</label> 
 
-					<p>{this.item}</p> 
+					<p>{this.state.randomisePlayers}</p>
 
 				</div> 
 
