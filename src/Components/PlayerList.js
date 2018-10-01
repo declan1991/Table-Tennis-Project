@@ -7,12 +7,11 @@ class PlayerList extends Component {
 		this.state = {
 			value: '', //empty string for user to input player names
 			playerNames: [], // empty array to store players name 
-
 		}
 
 		this.handleChange = this.handleChange.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
-		this.randomise = this.randomise.bind(this)
+		this.matchPairs = this.matchPairs.bind(this)
 	}
 
 	handleChange(event) {
@@ -23,39 +22,57 @@ class PlayerList extends Component {
 
 	handleSubmit(event) {
 		this.setState({
-			value: '',
-			playerNames: this.state.playerNames.concat([this.state.value] + ' ') 
+			value: '', 
+			playerNames: this.state.playerNames.concat([this.state.value] + ' '),
 		}); 
 	}
 
-	randomise(event) {
+	matchPairs(event) {
 
-		let randomisePlayers = this.state.playerNames;
+		let playerMatches = this.state.playerNames //copy array
 
-		if(randomisePlayers.length % 2 != 0) {
-			alert("You must have an even number of players. You currenty have " + randomisePlayers.length + " players.");
-		} else {
-
-			let arr1 = randomisePlayers.slice(), // copy array
-			    arr2 = randomisePlayers.slice(); // copy array again
-
-			    arr1.sort(function() {return 0.5 - Math.random();}); // shuffle arrays
-			    arr2.sort(function() {return 0.5 - Math.random();});
-
-			    while (arr1.length) {
-			    	let player1 = arr1.pop() // get last value of arr1 
-			    	let player2 = arr2[0] == player1 ? arr2.pop() : arr2.shift(); 
-			    	              // if the first value is the same as player1,
-			    	              // get the last value, otherwise get the first
-
-		this.setState({
-			randomisePlayers: player1 + 'vs ' + player2 
-			});
-    
-		}
+		if (playerMatches.length % 2 !== 0) {
+        alert("You must have an even number of players. You currently have " + playerMatches.length + " players.");
+   
 	}
-}
+
+	/*
+	Shuffle the provided array.
+	*/
+
+	let shuffle = function(a) {
+	    for (let i = a.length - 1; i > 0; i--) {
+	        const j = Math.floor(Math.random() * (i + 1));
+	        [a[i], a[j]] = [a[j], a[i]];
+	    }
+	    return a;
+	} 
+
+	/*
+	Return an array of pairs.
+
+	Loop through the array and on each iteration, use ++i to push it to the 
+	next item, so each iteration is actually incrementing i twice.
+	*/
+
+	let getPairs = function(a) {
+	    let pairs = []; //Create an empty array
+	    for (let i = 0; i < a.length; i++) { // loop through provided array
+	        pairs.push([ // add a pair to the pairs array
+	            a[i], // get the current array position
+	            a[++i] // increment i to get the next array position
+	        ]);
+	    }
+	    return pairs;
+	}
+
+	console.log(getPairs(shuffle(playerMatches)));
+
+	this.setState({ })
 	
+	}
+	//console.log(getPairs(shuffle(names)));*/ 
+
 	render() {
 		return (
 
@@ -73,19 +90,16 @@ class PlayerList extends Component {
 					<button className="addBtn" 
 					onClick={this.handleSubmit}>Add Player
 					</button>
-
-						
+	
 				</div>
 
 				<button className="generateBtn" 
-					onClick={this.randomise}>Generate Pairings
+					onClick={this.matchPairs}>Generate Pairings
 					</button>
 
 				<div className="player-matches"> 
 
-					<label className="subheadright">Who vs Who</label> 
-
-					<p>{this.randomisePlayers}</p>
+					<label className="subheadright">Match Pairings</label>
 
 				</div> 
 
