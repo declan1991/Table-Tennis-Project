@@ -14,6 +14,6 @@ Things still to get done:
 1) Get generate pairings button working to output and render player names on screen e.g 'playername vs playername'.
 2) Ability to record scores for each player and mark which player has won from each pairing, to create the next round of the tournament playoffs
 3) Continued rounds created until the final (last 2 players who have won all matches to date play each other, one marked as the winner)
-4) Clean up styling - make page responive to make it viewable on smaller screens and devices. 
+4) Clean up styling - make page responsive to make it viewable on smaller screens and devices. 
 
 
