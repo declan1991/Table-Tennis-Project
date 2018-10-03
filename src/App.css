@@ -83,6 +83,11 @@
 	border-right: dashed 8px black;
 }
 
+.match-pairings {
+	list-style: none; 
+	text-align: center; 
+}
+
 
 
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Table-Tennis-Game-Generator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-heading-container ">
+        <h1 class="site-title">Table-Tennis Game Generator</h1>
+    </header>
+
+    <img src="images/racket.gif" class="image-style" /> 
+
+    <form id="form">
+        <div class="container1">
+        
+            <label class="playerNames" for="playerNames">Enter Player Names</label> 
+
+            <input class="inputField" id="playerNames" type="text" />
+
+            <input class="add-btn" type="button" value="Add-Player"  
+            onclick="insert();" />    
+
+            <input class="view-btn" type="button" value="View-Players"
+            onclick="show();" />
+        
+        </div>
+    </form>
+       
+        <div class="nameLi" id="display"></div>
+        <div class="matchPairs" id='matchesDisplay'></div>
+
+            <input class="gen-btn" type="button" value="Generate Games" 
+            onclick="generatePairs();">
+        
+        </div>    
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+let playerNames=[];
+
+function insert(){
+    let playerValue = document.getElementById('playerNames').value;
+    playerNames[playerNames.length]=playerValue;
+  }
+
+function show() {
+  let content="Players:<br><br>";
+  for(let i = 0; i < playerNames.length; i++) {
+     content +=playerNames[i]+"<br>";
+  }
+
+  document.getElementById('display').innerHTML = content;
+}
+
+function generatePairs() {
+
+let randomisePlayerList = playerNames; 
+
+if (randomisePlayerList.length % 2 != 0) {
+    alert("You must have an even number of players. You currently have " + randomisePlayerList.length + " players.");
+} 
+
+let shuffle = function(players) {
+        for (let i = players.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [players[i], players[j]] = [players[j], players[i]];
+        }
+        return players;
+    } 
+
+    /*
+    Return an array of pairs.
+
+    Loop through the array and on each iteration, use ++i to push it to the 
+    next item, so each iteration is actually incrementing i twice.
+    */
+
+    let getPairs = function(players) {
+        let pairs = []; //Create an empty array
+        for (let i = 0; i < players.length; i++) { // loop through provided array
+            pairs.push([ // add a pair to the pairs array
+                players[i], // get the current array position
+                players[++i] // increment i to get the next array position
+            ]);
+        }
+        return pairs;
+    }
+
+    console.log(getPairs(shuffle(randomisePlayerList)));
+    document.getElementById('matchesDisplay').innerHTML = randomisePlayerList; 
+
+}
+
+</script>
