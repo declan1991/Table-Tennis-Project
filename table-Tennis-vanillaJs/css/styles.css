@@ -88,13 +88,7 @@ body {
 	padding: 100px;
 	width: 80.8%;
 	margin-left: 5%;
-	/*background-color: #66CCCC;*/ 
-
-    
-    background: -webkit-linear-gradient(-66deg, rgb(147, 155, 161), rgb(45, 200, 206));
-    background: linear-gradient(-66deg, rgb(147, 155, 161), rgb(45, 200, 206));
-
-
+	background-color: #66CCCC; 
 }
 
 .nameLi {
